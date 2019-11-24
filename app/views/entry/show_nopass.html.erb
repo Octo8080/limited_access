@@ -1,0 +1,22 @@
+<h1>Entry#show</h1>
+<p>Find me in app/views/entry/show.html.erb</p>
+
+<%= @event.name %>
+<%= form_for @event,url: limited_entry_show_path(@event),html:{method:'post'}  do |form| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "送信" %>
+  </div>
+<% end %>
+<%= link_to "戻る" ,root_path%>
